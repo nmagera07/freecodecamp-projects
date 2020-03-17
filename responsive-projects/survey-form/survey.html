@@ -3,36 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="survey.css">
     <title>Survey</title>
 </head>
+
 <body>
-    <div class="container">
+    <main class="container">
         <h1 id="title">Pet Survey Form</h1>
         <p id="description">A short survey to fill out to find the pet of your dreams!</p>
 
         <div>
             <form id="survey-form">
-                <label for="name-label">Name</label>
-                <input type="text" id="name-label" name="name">
+                <div class="section-1">
+                    <label for="name" id="name-label"></label>
+                    <input type="text" id="name" name="name" placeholder="name" required>
 
-                <label for="email-label">Email</label>
-                <input type="text" id="email-label" name="email">
+                    <label for="email" id="email-label"></label>
+                    <input type="email" id="email" name="email" placeholder="email" required>
 
-                <label for="number-label">Age of pet</label>
-                <input type="number" id="number-label" name="age" min=1 max=10>
+                    <label for="number" id="number-label"></label>
+                    <input type="number" id="number" name="age" min=1 max=10 placeholder="age" required>
+                </div>
+                <div class="section-2">
+                    <div class="previous-pet">
+                        <label for="previous-pet">Have you had a pet before?</label>
 
-                <label for="dropdown">Cat</label>
-                <input type="radio" id="dropdown" name="pet-type" value="cat">
+                        <label for="previous-pet">Yes</label>
+                        <input type="radio" id="previous-pet" name="previous-pet" value="Yes">
+                        <label for="previous-pet">No</label>
+                        <input type="radio" id="previous-pet" name="previous-pet" value="No">
+                    </div>
 
-                <label for="dropdown">Dog</label>
-                <input type="radio" id="dropdown" name="pet-type" value="dog">
+                    <div class="pet-age">
+                        <label for="dropdown">Pet age</label>
+                        <select id="dropdown" name="pet-age">
+                            <option value="none"></option>
+                            <option value="baby">Baby</option>
+                            <option value="young">Young</option>
+                            <option value="adult">Adult</option>
+                            <option value="elder">Elder</option>
+                        </select>
+                    </div>
 
-                <label for="textarea">Additional Comments: </label>
-                <textarea></textarea>
+                    <div class="pet-type">
+                        <label for="pet-type">Choose your pet type</label>
+                        <input type="checkbox" id="pet-type" name="cat" value="cat">
+                        <label for="pet-type">Cat</label>
+                        <input type="checkbox" id="pet-type" name="dog" value="dog">
+                        <label for="pet-type">Dog</label>
+                    </div>
+                </div>
 
-                <button type="submit" id="submit">Submit</button>
+                <div class="section-3">
+                    <label for="textarea">Additional Comments: </label>
+                    <textarea name="comments" rows="5" cols="30"></textarea>
+                </div>
+                <br>
+                <div class="button">
+                    <button type="submit" id="submit">Submit</button>
+                </div>
             </form>
         </div>
-    </div>
+    </main>
 </body>
 </html>
