@@ -9,9 +9,11 @@
 
 <body>
     <main class="container">
-        <h1 id="title">Pet Survey Form</h1>
-        <p id="description">A short survey to fill out to find the pet of your dreams!</p>
-
+        <header>
+            <h1 id="title">Pet Survey Form</h1>
+            <img src="https://i.insider.com/5cf56539594ea5383d3a001a?width=1100&format=jpeg&auto=webp" alt="dog and cat snuggling">
+            <p id="description">A short survey to fill out to find the pet of your dreams!</p>
+        </header>
         <div>
             <form id="survey-form">
                 <div class="section-1">
@@ -25,7 +27,7 @@
                     <input type="number" id="number" name="age" min=1 max=10 placeholder="age" required>
                 </div>
                 <div class="section-2">
-                    <div class="previous-pet">
+                    <div class="pet-info">
                         <label for="previous-pet">Have you had a pet before?</label>
 
                         <label for="previous-pet">Yes</label>
@@ -34,7 +36,7 @@
                         <input type="radio" id="previous-pet" name="previous-pet" value="No">
                     </div>
 
-                    <div class="pet-age">
+                    <div class="pet-info">
                         <label for="dropdown">Pet age</label>
                         <select id="dropdown" name="pet-age">
                             <option value="none"></option>
@@ -45,7 +47,7 @@
                         </select>
                     </div>
 
-                    <div class="pet-type">
+                    <div class="pet-info">
                         <label for="pet-type">Choose your pet type</label>
                         <input type="checkbox" id="pet-type" name="cat" value="cat">
                         <label for="pet-type">Cat</label>
@@ -56,7 +58,7 @@
 
                 <div class="section-3">
                     <label for="textarea">Additional Comments: </label>
-                    <textarea name="comments" rows="5" cols="30"></textarea>
+                    <textarea name="comments" rows="7" cols="50"></textarea>
                 </div>
                 <br>
                 <div class="button">
