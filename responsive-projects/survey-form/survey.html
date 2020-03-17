@@ -6,6 +6,33 @@
     <title>Survey</title>
 </head>
 <body>
-    
+    <div class="container">
+        <h1 id="title">Pet Survey Form</h1>
+        <p id="description">A short survey to fill out to find the pet of your dreams!</p>
+
+        <div>
+            <form id="survey-form">
+                <label for="name-label">Name</label>
+                <input type="text" id="name-label" name="name">
+
+                <label for="email-label">Email</label>
+                <input type="text" id="email-label" name="email">
+
+                <label for="number-label">Age of pet</label>
+                <input type="number" id="number-label" name="age" min=1 max=10>
+
+                <label for="dropdown">Cat</label>
+                <input type="radio" id="dropdown" name="pet-type" value="cat">
+
+                <label for="dropdown">Dog</label>
+                <input type="radio" id="dropdown" name="pet-type" value="dog">
+
+                <label for="textarea">Additional Comments: </label>
+                <textarea></textarea>
+
+                <button type="submit" id="submit">Submit</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
