@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=David+Libre|Noto+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/41fbaedc07.js" crossorigin="anonymous"></script>
     <title>Product Landing Page</title>
 </head>
 <body>
@@ -12,10 +13,10 @@
         <nav id="nav-bar">
             <img src="images/libra.png" alt="libra logo" id="header-img">
             <ul>
-                <li>Vision</li>
-                <li>More Info</li>
-                <li>Contact Us</li>
-                <li>White Paper</li>
+                <a href="#vision"><li>Vision</li></a>
+                <a href="#info"><li>More Info</li></a>
+                <a href="#contact"><li>Contact Us</li></a>
+                <a href="#paper"><li>White Paper</li></a>
             </ul>
         </nav>
     </header>
@@ -25,7 +26,7 @@
             <div class="hero-title"> 
                 <h1>Welcome to Libra</h1>
             </div>
-            <div class="hero-info">
+            <div class="hero-info" id="vision">
                 <h3>The Libra Mission</h3>
                 <p>A simple global currency and financial infrastructure that empowers billions of people.</p>
                 <p>Reinvent money. Transform the global economy. So people everywhere can live better lives.</p>
@@ -33,13 +34,49 @@
         </section>
         <section class="more-info">
             <div class="info-title">
-                <h1>Libra is for everyone</h1>
+                <h1 id="info">Libra is for everyone</h1>
                 <p>Moving money around the world should be as easy and cheap as sending a text message. No matter where you live, what you do, or how much you earn.</p>
             </div>
             <div class="info-video">
-                <iframe width="500" height="400" src="https://www.youtube.com/embed/MKkJ6UzAVLM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="500" height="400" src="https://www.youtube.com/embed/MKkJ6UzAVLM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="video"></iframe>
             </div>
         </section>
+        <section class="white-paper">
+            <div class="paper-img">
+                <img src="images/white-papers.png" alt="white paper logo">
+            </div>
+            <div class="paper-title" id="paper">
+                <h1>The Libra White Paper</h1>
+                <p>The Blockchain. The Currency. The Association.</p>
+                <a href="https://libra.org/en-US/white-paper/"><button>Read the White Paper</button></a>
+            </div>
+        </section>
+        <section class="form">
+            <form action="https://www.freecodecamp.com/email-submit" id="contact">
+                <label for="email" id="email-label">Contact Us</label>
+                <input type="email" id="email" name="email" placeholder="email" required>
+                <button type="submit" id="submit">Submit</button>
+            </form>
+        </section>
+        <footer>
+            <div class="footer-info"> 
+                <ul>
+                    <li>Vision</li>
+                    <li>More Info</li>
+                    <li>Contact Us</li>
+                    <li>White Paper</li>
+                </ul>
+                <div class="icons">
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+
+        </footer>
     </main>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 </html>
