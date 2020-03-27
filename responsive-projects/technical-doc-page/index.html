@@ -8,29 +8,30 @@
     <title>Technical Documentation</title>
 </head>
 <body>
-    <header>
         <nav id="navbar">
-            <ul>
-                <li><a href="#" class="nav-link">HTTP</a></li>
-                <li><a href="#" class="nav-link">Introduction</a></li>
-                <li><a href="#" class="nav-link">HTTP Components</a></li>
-                <li><a href="#" class="nav-link">HTTP Basics</a></li>
-                <li><a href="#" class="nav-link">HTTP Flow</a></li>
-                <li><a href="#" class="nav-link">HTTP Cookies</a></li>
-                <li><a href="#" class="nav-link">Creating Cookies</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main id="main-doc">
-        <section class="main-section">
             <header>
-                <h1>Introduction</h1>
+            <ul>
+                <!-- <li><a href="#" class="nav-link">HTTP</a></li> -->
+                <li><a href="#Intro_to_HTTP" class="nav-link">Intro to HTTP</a></li>
+                <li><a href="#HTTP_Components" class="nav-link">HTTP Components</a></li>
+                <li><a href="#HTTP_Basics" class="nav-link">HTTP Basics</a></li>
+                <li><a href="#HTTP_Flow" class="nav-link">HTTP Flow</a></li>
+                <li><a href="#HTTP_Cookies" class="nav-link">HTTP Cookies</a></li>
+                <li><a href="#Creating_Cookies" class="nav-link">Creating Cookies</a></li>
+            </ul>
+            </header>
+        </nav>
+    <main id="main-doc">
+        <section class="main-section" id="Intro_to_HTTP">
+            <header >
+                <h1>Intro to HTTP</h1>
             </header>
             <p>HTTP is a protocol which allows the fetching of resources, such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. A complete document is reconstructed from the different sub-documents fetched, for instance text, layout description, images, videos, scripts, and more.</p>
             <p>Clients and servers communicate by exchanging individual messages (as opposed to a stream of data). The messages sent by the client, usually a Web browser, are called requests and the messages sent by the server as an answer are called responses.</p>
         </section>
-        <section class="main-section">
-            <header>
+
+        <section class="main-section" id="HTTP_Components">
+            <header >
                 <h1>HTTP Components</h1>
             </header>
             <p>HTTP is a client-server protocol: requests are sent by one entity, the user-agent (or a proxy on behalf of it). Most of the time the user-agent is a Web browser, but it can be anything, for example a robot that crawls the Web to populate and maintain a search engine index.</p>
@@ -41,8 +42,8 @@
 
             <p>In reality, there are more computers between a browser and the server handling the request: there are routers, modems, and more. Thanks to the layered design of the Web, these are hidden in the network and transport layers. HTTP is on top, at the application layer. Although important to diagnose network problems, the underlying layers are mostly irrelevant to the description of HTTP.</p>
         </section>
-        <section class="main-section">
-            <header>
+        <section class="main-section" id="HTTP_Basics">
+            <header >
                 <h1>HTTP Basics</h1>
             </header>
             <h3>HTTP is simple</h3>
@@ -61,8 +62,8 @@
             <p>Experiments are in progress to design a better transport protocol more suited to HTTP. For example, Google is experimenting with QUIC which builds on UDP to provide a more reliable and efficient transport protocol.</p>
         </section>
 
-        <section class="main-section">
-            <header>
+        <section class="main-section" id="HTTP_Flow">
+            <header >
                 <h1>HTTP Flow</h1>
             </header>
             <p>When a client wants to communicate with a server, either the final server or an intermediate proxy, it performs the following steps:</p>
@@ -84,13 +85,14 @@
                     <br>
                     !DOCTYPE html... (here comes the 29769 bytes of the requested web page)</code>
                 <li>4. Close or reuse the connection for further requests.</li>
+                <li>5. Success!</li>
 
             </ol>
             <p>If HTTP pipelining is activated, several requests can be sent without waiting for the first response to be fully received. HTTP pipelining has proven difficult to implement in existing networks, where old pieces of software coexist with modern versions. HTTP pipelining has been superseded in HTTP/2 with more robust multiplexing requests within a frame.</p>
         </section>
 
-        <section class="main-section"> 
-            <header>
+        <section class="main-section" id="HTTP_Cookies"> 
+            <header >
             <h1>HTTP Cookies</h1>
             </header>
             <p>An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user's web browser. The browser may store it and send it back with the next request to the same server. Typically, it's used to tell if two requests came from the same browser — keeping a user logged-in, for example. It remembers stateful information for the stateless HTTP protocol</p>
@@ -106,8 +108,10 @@
             <p>Cookies were once used for general client-side storage. While this was legitimate when they were the only way to store data on the client, it is recommended nowadays to prefer modern storage APIs. Cookies are sent with every request, so they can worsen performance (especially for mobile data connections). Modern APIs for client storage are the Web storage API (localStorage and sessionStorage) and IndexedDB.</p>
         </section>
 
-        <section class="main-section"> 
-            <h1>Creating Cookies</h1>
+        <section class="main-section" id="Creating_Cookies"> 
+            <header >
+                <h1>Creating Cookies</h1>
+            </header>
             <p>When receiving an HTTP request, a server can send a Set-Cookie header with the response. The cookie is usually stored by the browser, and then the cookie is sent with requests made to the same server inside a Cookie HTTP header. An expiration date or duration can be specified, after which the cookie is no longer sent. Additionally, restrictions to a specific domain and path can be set, limiting where the cookie is sent.</p>
             <p>The Set-Cookie HTTP response header sends cookies from the server to the user agent. A simple cookie is set like this:</p>
             <code>
