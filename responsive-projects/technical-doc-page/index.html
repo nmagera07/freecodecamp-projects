@@ -3,9 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway|Roboto&display=swap" rel="stylesheet">
     <title>Technical Documentation</title>
 </head>
 <body>
-    
+    <header>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#" class="nav-link">HTTP</a></li>
+                <li><a href="#" class="nav-link">Introduction</a></li>
+                <li><a href="#" class="nav-link">HTTP Components</a></li>
+                <li><a href="#" class="nav-link">HTTP Basics</a></li>
+                <li><a href="#" class="nav-link">HTTP Flow</a></li>
+                <li><a href="#" class="nav-link">HTTP Cookies</a></li>
+                <li><a href="#" class="nav-link">Creating Cookies</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main-doc">
+        <section class="main-section">
+            <header>
+                <h1>Introduction</h1>
+            </header>
+            <p>HTTP is a protocol which allows the fetching of resources, such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. A complete document is reconstructed from the different sub-documents fetched, for instance text, layout description, images, videos, scripts, and more.</p>
+            <p>Clients and servers communicate by exchanging individual messages (as opposed to a stream of data). The messages sent by the client, usually a Web browser, are called requests and the messages sent by the server as an answer are called responses.</p>
+        </section>
+        <section class="main-section">
+            <header>
+                <h1>HTTP Components</h1>
+            </header>
+            <p>HTTP is a client-server protocol: requests are sent by one entity, the user-agent (or a proxy on behalf of it). Most of the time the user-agent is a Web browser, but it can be anything, for example a robot that crawls the Web to populate and maintain a search engine index.</p>
+
+            <p>Each individual request is sent to a server, which handles it and provides an answer, called the response. Between the client and the server there are numerous entities, collectively called proxies, which perform different operations and act as gateways or caches, for example.</p>
+
+            <img src="images/Client-server-chain.png">
+
+            <p>In reality, there are more computers between a browser and the server handling the request: there are routers, modems, and more. Thanks to the layered design of the Web, these are hidden in the network and transport layers. HTTP is on top, at the application layer. Although important to diagnose network problems, the underlying layers are mostly irrelevant to the description of HTTP.</p>
+        </section>
+        <section class="main-section">
+            <header>
+                <h1>HTTP Basics</h1>
+            </header>
+            <h3>HTTP is simple</h3>
+            <p>HTTP is generally designed to be simple and human readable, even with the added complexity introduced in HTTP/2 by encapsulating HTTP messages into frames. HTTP messages can be read and understood by humans, providing easier testing for developers, and reduced complexity for newcomers.</p>
+            <h3>HTTP is extensible</h3>
+            <p>Introduced in HTTP/1.0, HTTP headers make this protocol easy to extend and experiment with. New functionality can even be introduced by a simple agreement between a client and a server about a new header's semantics.</p>
+            <h3>HTTP is stateless, but not sessionless</h3>
+            <p>HTTP is stateless: there is no link between two requests being successively carried out on the same connection. This immediately has the prospect of being problematic for users attempting to interact with certain pages coherently, for example, using e-commerce shopping baskets. But while the core of HTTP itself is stateless, HTTP cookies allow the use of stateful sessions. Using header extensibility, HTTP Cookies are added to the workflow, allowing session creation on each HTTP request to share the same context, or the same state.</p>
+            <h3>HTTP and connections</h3>
+            <p>A connection is controlled at the transport layer, and therefore fundamentally out of scope for HTTP. Though HTTP doesn't require the underlying transport protocol to be connection-based; only requiring it to be reliable, or not lose messages (so at minimum presenting an error). Among the two most common transport protocols on the Internet, TCP is reliable and UDP isn't. HTTP therefore relies on the TCP standard, which is connection-based.</p>
+
+            <p>Before a client and server can exchange an HTTP request/response pair, they must establish a TCP connection, a process which requires several round-trips. The default behavior of HTTP/1.0 is to open a separate TCP connection for each HTTP request/response pair. This is less efficient than sharing a single TCP connection when multiple requests are sent in close succession.</p>
+                
+            <p>In order to mitigate this flaw, HTTP/1.1 introduced pipelining (which proved difficult to implement) and persistent connections: the underlying TCP connection can be partially controlled using the Connection header. HTTP/2 went a step further by multiplexing messages over a single connection, helping keep the connection warm and more efficient.</p>
+                
+            <p>Experiments are in progress to design a better transport protocol more suited to HTTP. For example, Google is experimenting with QUIC which builds on UDP to provide a more reliable and efficient transport protocol.</p>
+        </section>
+
+        <section class="main-section">
+            <header>
+                <h1>HTTP Flow</h1>
+            </header>
+            <p>When a client wants to communicate with a server, either the final server or an intermediate proxy, it performs the following steps:</p>
+            <ol>
+                <li>1. Open a TCP connection: The TCP connection is used to send a request, or several, and receive an answer. The client may open a new connection, reuse an existing connection, or open several TCP connections to the servers.</li>
+                <li>2. Send an HTTP message: HTTP messages (before HTTP/2) are human-readable. With HTTP/2, these simple messages are encapsulated in frames, making them impossible to read directly, but the principle remains the same. For example:</li>
+                <code>GET / HTTP/1.1<br>
+                    Host: developer.mozilla.org<br>
+                    Accept-Language: fr</code>
+                <li>3. Read the response sent by the server, such as:</li>
+                <code>HTTP/1.1 200 OK<br>
+                    Date: Sat, 09 Oct 2010 14:28:02 GMT<br>
+                    Server: Apache<br>
+                    Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT<br>
+                    ETag: "51142bc1-7449-479b075b2891b"<br>
+                    Accept-Ranges: bytes<br>
+                    Content-Length: 29769<br>
+                    Content-Type: text/html<br>
+                    <br>
+                    !DOCTYPE html... (here comes the 29769 bytes of the requested web page)</code>
+                <li>4. Close or reuse the connection for further requests.</li>
+
+            </ol>
+            <p>If HTTP pipelining is activated, several requests can be sent without waiting for the first response to be fully received. HTTP pipelining has proven difficult to implement in existing networks, where old pieces of software coexist with modern versions. HTTP pipelining has been superseded in HTTP/2 with more robust multiplexing requests within a frame.</p>
+        </section>
+
+        <section class="main-section"> 
+            <header>
+            <h1>HTTP Cookies</h1>
+            </header>
+            <p>An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user's web browser. The browser may store it and send it back with the next request to the same server. Typically, it's used to tell if two requests came from the same browser — keeping a user logged-in, for example. It remembers stateful information for the stateless HTTP protocol</p>
+            <p>Cookies are mainly used for three purposes:</p>
+
+            <h4>Session Management</h4>
+            <p>Logins, shopping carts, game scores, or anything else the server should remember</p>
+            <h4>Personalization</h4>
+            <p>User preferences, themes, and other settings</p>
+            <h4>Tracking</h4>
+            <p>Recording and analyzing user behavior</p>
+
+            <p>Cookies were once used for general client-side storage. While this was legitimate when they were the only way to store data on the client, it is recommended nowadays to prefer modern storage APIs. Cookies are sent with every request, so they can worsen performance (especially for mobile data connections). Modern APIs for client storage are the Web storage API (localStorage and sessionStorage) and IndexedDB.</p>
+        </section>
+
+        <section class="main-section"> 
+            <h1>Creating Cookies</h1>
+            <p>When receiving an HTTP request, a server can send a Set-Cookie header with the response. The cookie is usually stored by the browser, and then the cookie is sent with requests made to the same server inside a Cookie HTTP header. An expiration date or duration can be specified, after which the cookie is no longer sent. Additionally, restrictions to a specific domain and path can be set, limiting where the cookie is sent.</p>
+            <p>The Set-Cookie HTTP response header sends cookies from the server to the user agent. A simple cookie is set like this:</p>
+            <code>
+                Set-cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;
+            </code>
+            <p>This header from the server tells the client to store a cookie.</p>
+
+            <code>
+                <pre>
+HTTP/2.0 200 OK
+Content-type: text/html
+Set-Cookie: yummy_cookie=choco
+Set-Cookie: tasty_cookie=strawberry
+                
+[page content]</pre></code>
+            <p>Now, with every new request to the server, the browser will send back all previously stored cookies to the server using the Cookie header.</p>
+            <code>
+                <pre>
+GET /sample_page.html HTTP/2.0
+Host: www.example.org
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry</pre></code><br>
+
+            <h3>Session Cookies</h3>
+            <p>The cookie created above is a session cookie: it is deleted when the client shuts down, because it didn't specify an Expires or Max-Age directive. However, web browsers may use session restoring, which makes most session cookies permanent, as if the browser was never closed.</p>
+            
+            <h3>Permanent Cookies</h3>
+            <p>Instead of expiring when the client closes, permanent cookies expire at a specific date (Expires) or after a specific length of time (Max-Age).</p>
+
+            <code>
+                <pre>Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;</pre>
+            </code><br>
+
+            <h3>Secure and HttpOnly cookies</h3>
+            <p>A secure cookie is only sent to the server with an encrypted request over the HTTPS protocol. Even with Secure, sensitive information should never be stored in cookies, as they are inherently insecure and this flag can't offer real protection. Starting with Chrome 52 and Firefox 52, insecure sites (http:) can't set cookies with the Secure directive.</p>
+            <p>To help mitigate cross-site scripting (XSS) attacks, HttpOnly cookies are inaccessible to JavaScript's Document.cookie API; they are only sent to the server. For example, cookies that persist server-side sessions don't need to be available to JavaScript, and the HttpOnly flag should be set.</p>
+
+            <code>
+                <pre>Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly</pre>
+            </code>
+        </section>
+    </main>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 </html>
