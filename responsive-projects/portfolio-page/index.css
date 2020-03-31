@@ -135,14 +135,14 @@ nav a {
 }
 
 .project-tile {
-    width: 40%;
+    width: 35%;
     margin-bottom: 4%;
 }
 
 .project-tile img {
     height: 150px;
-    max-width: 250px;
-    border-radius: 5px;
+    width: 200px;
+    border-radius: 20%;
 }
 
 .project-tile h1 {
@@ -162,7 +162,7 @@ nav a {
 }
 
 .project-tile p {
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
     line-height: 1.4em;
 }
@@ -175,6 +175,7 @@ footer {
     background-color: #2E56A6;
     padding-top: 2%;
     font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2em;
 }
 
 .footer-links {
@@ -182,10 +183,66 @@ footer {
     justify-content: space-evenly;
     width: 30%;
     margin: 2%;
-    
 }
 
 .fab {
     font-size: 1.6rem;
     color: black;
+}
+
+@media (max-width: 800px) {
+    nav ul {
+        width: 80%;
+        margin: 2%;
+    }
+
+    .aboutme h1 {
+        width: 50%;
+    }
+
+    .aboutme p {
+        width: 70%;
+    }
+
+    .project-layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .project-tile {
+        width: 50%;
+        margin: 5%;
+    }
+
+    .project-tile p {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    nav ul {
+        width: 50%;
+    }
+
+    .aboutme h1 {
+        width: 60%;
+    }
+
+    .aboutme p {
+        width: 70%;
+        margin: 2%;
+    }
+
+    .project-layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .project-tile {
+        width: 50%;
+    }
 }
