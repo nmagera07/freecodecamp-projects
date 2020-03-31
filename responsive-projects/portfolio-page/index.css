@@ -190,7 +190,7 @@ footer {
     color: black;
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
     nav ul {
         width: 80%;
         margin: 2%;
@@ -244,5 +244,61 @@ footer {
 
     .project-tile {
         width: 50%;
+    }
+} */
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 900px) {
+    nav ul {
+        width: 100%;
+        margin: 5%;
+    }
+
+    nav h1 {
+        display: none;
+    }
+
+    .aboutme h1 {
+        width: 100%;
+        font-size: 1.3rem;
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 10%;
+    }
+
+    .aboutme p {
+        width: 100%;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    img {
+        display: none;
+    }
+
+    .project-layout h1 {
+        font-size: 1.5em;
+        width: 100%;
+        text-align: center;
+        margin: 3%;
+    }
+
+    .project-tile {
+        width: 100%;
+        margin: 3% auto;
+    }
+
+    .project-tile h3 {
+        width: 100%;
+    }
+
+    footer p {
+        width: 60%;
+        margin: 4%;
+        line-height: 1.5em;
+        text-align: center;
+    }
+
+    .footer-links a {
+        margin: 5%;
     }
 }
