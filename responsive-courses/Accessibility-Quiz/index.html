@@ -13,11 +13,11 @@
       <h1>HTML/CSS Quiz</h1>
       <nav>
         <ul>
-          <li><a href="#student-info">INFO</a></li>
-          <li><a href="#html-questions">HTML</a></li>
-          <li><a href="#css-questions">CSS</a></li>
-        </ul>
-      </nav>
+            <li><a href="#student-info" accesskey="s">INFO</a></li>
+            <li><a href="#html-questions" accesskey="h">HTML</a></li>
+            <li><a href="#css-questions" accesskey="c">CSS</a></li>
+          </ul>
+        </nav>
     </header>
     <main>
       <form method="post" action="https://freecodecamp.org/practice-project/accessibility-quiz">
@@ -85,8 +85,37 @@
             </fieldset>
           </div>
         </section>
-
-    </form>
-</main>
-</body>
+        <section role="region" aria-labelledby="css-questions">
+          <h2 id="css-questions">CSS</h2>
+          <div class="formrow">
+            <div class="question-block">
+              <label for="customer">Are you a frontend developer?</label>
+            </div>
+            <div class="answer">
+              <select name="customer" id="customer" required>
+                <option value="">Select an option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="question-block">
+              <label for="css-questions">Do you have any questions:</label>
+            </div>
+            <div class="answer">
+              <textarea id="css-questions" name="css-questions" rows="5" cols="24" placeholder="Who is flexbox..."></textarea>
+            </div>
+          </div>
+        </section>
+        <button type="submit">Send</button>
+      </form>
+    </main>
+    <footer>
+      <address>
+        <a href="https://freecodecamp.org">freeCodeCamp</a><br />
+        San Francisco<br />
+        California<br />
+        USA
+      </address>
+    </footer>
+  </body>
 </html>
