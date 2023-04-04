@@ -120,3 +120,124 @@ myVar *= 5
 
 myVar = myVar / 5
 myVar /= 5
+
+
+// escaping literal quotes in strings
+// when defining a string, you must use single or double quotes
+// you can escape a quote in javascript by placing a '\' in front of the quote
+
+const sampleStr = "Alan said, \"Peter is learning JavaScript\"." // which will show: Alan said, "Peter is learning JavaScript".
+
+// quotes are not the only characters that can be escaped inside a string. some examples:
+
+/* 
+\' = single quote
+\" = double quote
+\\ = backslash
+\n = new line
+\t = tab
+\r = carriage return
+\b = word boundary
+\f = form feed
+*/
+
+// in javascript, when the '+' operator is used with a string value, it is called the concatenation operator. you can combine strings using this operator
+
+// 'My name is Alan,' + ' I concatenate.' = 'My name is Alan, I concatenate'
+
+// you can also use the += operator to concatenate a string onto an existing string
+
+let ourStr = "I come first. "
+ourStr += "I come second."
+
+// you can also use the + operator to insert a variable into a string you're building
+
+const ourName = 'freeCodeCamp'
+const ourStr = 'Hello, our name is ' + ourName + ', how are you?'
+
+// we can also append variables to a string using the += operator
+
+const anAdjective = 'awesome!'
+let ourStr = 'freeCodeCamp is '
+ourStr += anAdjective // 'freeCodeCamp is awesome!'
+
+// you can find the length of a string value by writing '.length' after the string variable or string literal
+
+console.log('Alan Peter'.length) // the console would output '10'
+
+// bracket notation is a way to get a character at a specific index within a string. javascript has zero-based indexing...starts counting at zero
+
+const firstName = 'Charles'
+const firstLetter = firstName[0] // firstLetter would have the value of 'C'
+
+// in javascript, string values are immutable, which means they cannot be changed once created
+
+let myStr = 'Bob'
+myStr[0] = 'J' // this will produce an error because you cannot changed the first character in the myStr variable
+
+let myStr = 'Bob'
+myStr = 'Job' // if you want to change the myStr value, you will have to re-assign a value to it, like so
+
+// you can also use bracket notation to get the character at other positions within a string
+
+const firstName = 'Ada'
+const secondLetterOfFirstName = firstName[1] // the value would be 'd'
+
+// if you want to get the last character of a string, you can subtract 1 from the string's length
+
+const firstName = 'Ada'
+const lastLetter = firstName[firstName.length - 1] // the value would be 'a'
+
+
+
+// with javascript array variables, we can store several pieces of data in one place
+
+const sandwich = ['peanut butter', 'jelly', 'bread']
+
+// you can also nest arrays inside other arrays
+
+const teams = [["bulls", 23], ["White Sox", 45]]
+
+// you can also use bracket notation to access data inside arrays
+
+const array = [50,60,70]
+console.log(array[0]) // this would print 50
+const data = array[1] // the value would be 60
+
+// unlike strings, arrays are mutable
+const ourArray = [50,40,30]
+ourArray[0] = 15 // the new array would be [15,40,30]
+
+// you can also use bracket notation to access mult-dimensional arrays, or just an array within an array
+
+const arr = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [[10, 11, 12], 13, 14]
+];
+
+const subarray = arr[3]; // the value would be [[10,11,12], 13, 14]
+const nestedSubarray = arr[3][0]; // the value would be [10,11,12]
+const element = arr[3][0][1]; // the value would be 11
+
+// an easy way to add data to the end of an array is via the '.push()' function
+
+const arr1 = [1,2,3]
+arr1.push(4) // new array would equal [1,2,3,4]
+
+// another way to change data is with the '.pop()' function. this will remove the last value in an array
+
+const threeArr = [1,4,6]
+const oneDown = threeArr.pop() // the value would be 6
+
+// if you want to remove the first value from an array, you would use the .shift() method
+
+const ourArray = ['Stimpson', 'J', ['cat']]
+const removedFromArray = ourArray = ourArray.shift() // the value would be 'Stimpson'
+
+// using the .unshift() method will add elements to the front of the array
+
+const ourArray = ["Stimpson", "J", "cat"];
+ourArray.shift();
+ourArray.unshift("Happy"); // the array would then be ['Happy', 'J','cat']
