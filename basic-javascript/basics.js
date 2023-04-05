@@ -241,3 +241,164 @@ const removedFromArray = ourArray = ourArray.shift() // the value would be 'Stim
 const ourArray = ["Stimpson", "J", "cat"];
 ourArray.shift();
 ourArray.unshift("Happy"); // the array would then be ['Happy', 'J','cat']
+
+
+
+// functions: in javascript we can divide our code up into reuseable parts called functions
+
+function functionName() {
+    console.log('Hello World')
+}
+
+// you can call or 'invoke' this function by using it's name followed by parentheses like this: functionName()
+
+// parameters are variables that act as placeholders for the values that are to be input to a function when it is called
+
+function testFun(param1, param2) {
+    console.log(param1, param2)
+}
+
+// when you call the function, you can input values and the function will print them to the console
+
+testFun('Hello', 'World') // will print 'Hello World' to the console
+
+// you can use the 'return' statement to send a value back out of a function
+
+function plusThree(num) {
+    return num + 3
+}
+
+const answer = plusThree(5) // will return the number 8
+
+/* in javascript, scope refers to the visibility of variables. variables which are defined outside of a function block have 'global' scope. 
+this means they can be seen everywhere in your javascript code. variables declared without the 'let' or 'const' keywords are automatically
+created in the 'global' scope. things can get messy when running multiple functions if this happens. this is why it's important to declare variables 
+with 
+'let' or 'const' */
+
+// variables that are declared within a function, as well as the function parameters, have 'local' scope. this means they are only visible in that function
+
+function myTest() {
+    const loc = 'foo'
+    console.log(loc)
+}
+
+myTest() // this will run the function, which prints 'foo'
+console.log(loc) // this will give an error because you are trying to access a variable outside of the function it is defined in
+
+// it is possible to have both local and global variables with the same name. in this instance, the local variable takes precedence over the global variable
+
+const someVar = 'Hat'
+
+function myFun() {
+    const someVar = 'Head'
+    return someVar
+} // this will return 'Head', because the local variable takes precedence
+
+// a function can include the 'return' statement, but it doesn't have to. the function will process the inner code but the returned value is 'undefined'
+
+let sum = 0
+
+function addSum(num) {
+    sum = sum + num
+}
+
+addSum(3) // this will return undefined because there is no return statement, but the sum variable value will still be changed
+
+// we can also take the return value of a function and assign it to a variable
+
+ourSum = sum(5,12) // this will run the sum function from above, which returns a value of 17 and this value is assigned to the ourSum variable
+
+
+
+// another data type is the boolean. booleans can only be two values, 'true' or 'false'
+
+function booleanFun() {
+    return true
+} // this will return the boolean 'true'
+
+// if statements are used to make decisions in code. the keyword 'if' tells javascript to execute the code in the curly braces under certain conditions
+
+/*
+if(conditions are true) {
+    statement is executed
+}
+*/
+
+// the most basic operator is the equality operator '=='. this operator compares two values and returns 'true' if they're equivalent, or 'false' if they aren't
+
+function equalityTest(myVal) {
+    if (myVal == 10) {
+        return 'Equal'
+    }
+    return 'Not equal'
+}
+
+// a key note, this operator can compare two different data types. if you want a stricter comparison, use '==='
+
+3 === '3' // this will be false because the string 3, is not equal to the number 3
+
+// you can deterimine the type of a variable or value using the 'typeof' operator
+
+typeof 3 // will return 'number'
+typeof '3' // will return 'string'
+
+// if you want to evaluate a value for it to be false, you would use the inequality operator '!='
+
+1 != 2 // this would return true
+1 != '1' // this would return false. this operator also evaluates different data types
+
+// if you want a stricter comparison, you can use the '!==' operator
+
+// the greater than operator '>' compares the values of two numbers. if the number to the left is greater, it'll return true, otherwise it'll return false
+
+5 > 3 // returns true
+5 > 10 // returns false
+
+// the '>=' operator is similiar except it evaluates whether the two numbers are greater or equal to each other
+
+5 >= 5 // returns true
+
+// similarly, the '<' operator works the same way, except it evaluates whether the left number is less than the right number
+
+5 < 3 // returns false
+3 < 4 // returns true
+
+// same with the '<=' operator
+
+5 <= 5 // returns true
+5 <= 3 // returns false
+
+// sometimes we need to test more than one thing at a time. that's where the and operator comes into play '&&'. this will return true if both operands are true
+
+if (num > 5) {
+    if (num < 10) {
+        return 'yes'
+    }
+    return 'no'
+}
+
+
+// we can shorten this code by using the '&&' operator
+
+if (num > 5 && num < 10) {
+    return 'Yes'
+}
+return 'no'
+
+// we can also use the or operator '||'. this will evaluate whether either of the operands are true
+
+if (num > 10) {
+    return 'no'
+}
+if (num < 5) {
+    return 'no'
+}
+return 'yes'
+
+// we can shorten this code by using the '||' operator
+
+if (num > 10 || num < 5) {
+    return 'no'
+}
+return 'yes'
