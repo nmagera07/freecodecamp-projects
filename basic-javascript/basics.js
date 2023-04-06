@@ -402,3 +402,110 @@ if (num > 10 || num < 5) {
     return 'no'
 }
 return 'yes'
+
+// with 'else' statements, you can run more code when a condition is false
+
+if (num > 10) {
+    return 'Bigger than 10'
+} else {
+    return '10 or less'
+} // if the condition is true, it will return the first statement, otherwise it will return the second statement
+
+// if you have multiple conditions that need to be addressed, you can chain if statements together with 'else if' statements
+
+if (num > 15) {
+    return "Bigger than 15";
+  } else if (num < 5) {
+    return "Smaller than 5";
+  } else {
+    return "Between 5 and 15";
+  }
+
+// order is important with 'if' and 'else if' statements. the function is executed from top to bottom
+
+function foo(x) {
+    if (x < 1) {
+      return "Less than one";
+    } else if (x < 2) {
+      return "Less than two";
+    } else {
+      return "Greater than or equal to two";
+    }
+  }
+
+  function bar(x) {
+    if (x < 2) {
+      return "Less than two";
+    } else if (x < 1) {
+      return "Less than one";
+    } else {
+      return "Greater than or equal to two";
+    }
+  }
+
+  // when you pass the same value through the functions, the first will return 'Less than one' and the second will return 'Less than two'
+
+// when you have many options to choose from, we can use a switch statement
+
+switch (fruit) {
+    case "apple":
+      console.log("The fruit is an apple");
+      break;
+    case "orange":
+      console.log("The fruit is an orange");
+      break;
+  } // the code evaluates each case until the break statment, then it will stop
+
+// you can add the 'default' statement, which will be executed if no matching case was found
+
+switch (num) {
+    case value1:
+      statement1;
+      break;
+    case value2:
+      statement2;
+      break;
+    default:
+      defaultStatement;
+      break;
+}
+
+// you can use switch statements instead of multiple 'if/else if' statements
+
+if (val === 1) {
+    answer = "a";
+  } else if (val === 2) {
+    answer = "b";
+  } else {
+    answer = "c";
+  }
+
+  // can be replaced with: 
+
+  switch (val) {
+    case 1:
+      answer = "a";
+      break;
+    case 2:
+      answer = "b";
+      break;
+    default:
+      answer = "c";
+  }
+
+// you can also return boolean operators from a function
+
+function isEqual(a, b) {
+    if (a === b) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+// this will work, but you can shorten it by using a comparison operator
+
+function isEqual(a,b) {
+    return a === b
+}
+
