@@ -509,3 +509,99 @@ function isEqual(a,b) {
     return a === b
 }
 
+
+
+// objects are similar to arrays, except of using indexes to access data, you access data in objects through their properties
+
+const cat = {
+  "name": "Whiskers",
+  "legs": 4,
+  "tails": 1,
+  "enemies": ["Water", "Dogs"]
+};
+
+// the properties for this object are stored as strings, such as 'name', 'legs' and 'tails. you can use different data types as a property for an object
+
+// there are two ways to access properties of an object: dot notation and bracket notation
+
+const myObj = {
+  prop1: 'val1',
+  prop2: 'val2',
+}
+
+const prop1val = myObj.prop1 // this variable will have the value of 'val1'
+const prop2val = myObj.prop2 // this variable will have the value of 'val2'
+
+const myObj = {
+  "Space Name": "Kirk",
+  "More Space": "Spock",
+  "NoSpace": "USS Enterprise"
+};
+
+myObj["Space Name"]; // returns the value 'Kirk'
+myObj['More Space']; // returns the value 'Spock'
+myObj["NoSpace"]; // returns the value 'USS Enterprise'
+
+// you can also use bracket notation to acess properties of an object which is stored as the value of a variable
+
+const dogs = {
+  Fido: "Mutt",
+  Hunter: "Doberman",
+  Snoopie: "Beagle"
+};
+
+const myDog = "Hunter";
+const myBreed = dogs[myDog];
+console.log(myBreed);
+
+// you can also use dot or bracket notation to update properties for an object
+
+const ourDog = {
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"]
+};
+
+ourDog.name = 'Happy Camper' // this would update the name property in the object to 'Happy Camper'
+ourDog['name'] = 'Happy Camper' // same thing, except we use bracket notation instead of dot notation
+
+// you can also add new properties to objects using the previous methods
+
+ourDog.bark = 'bow-wow'
+ourDog["bark"] = 'bow-wow'
+
+// this would add a 'bark' property to the ourDog object with the value of 'bow-wow'
+
+// you can also delete properties from an object using the 'delete' keyword
+
+delete ourDog.bark
+
+// sometimes it is useful to checkc if the property of a given object exists or not. we can use the '.hasOwnProperty(propname)' method to do so
+
+const myObj = {
+  top: "hat",
+  bottom: "pants"
+};
+
+myObj.hasOwnProperty("top"); // this will return true
+myObj.hasOwnProperty("middle"); // this will return false, because the property 'middle' doesn't exist
+
+// you can access nested properties by using the previous methods
+
+const ourStorage = {
+  "desk": {
+    "drawer": "stapler"
+  },
+  "cabinet": {
+    "top drawer": { 
+      "folder1": "a file",
+      "folder2": "secrets"
+    },
+    "bottom drawer": "soda"
+  }
+};
+
+ourStorage.cabinet["top drawer"].folder2; // this would return the value 'secrets'
+ourStorage.desk.drawer; // this would return the value 'stapler'
+
