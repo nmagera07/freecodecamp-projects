@@ -605,3 +605,60 @@ const ourStorage = {
 ourStorage.cabinet["top drawer"].folder2; // this would return the value 'secrets'
 ourStorage.desk.drawer; // this would return the value 'stapler'
 
+
+
+// you can run the same code multiple times by using a loop
+// one kind of loop you can use is the 'while' loop. this runs while a specified condition is true and stops once that condition is no longer true
+
+const ourArray = [];
+let i = 0;
+
+while (i < 5) {
+  ourArray.push(i);
+  i++;
+}
+
+// this while loop will execute 5 times and append the numbers 0 through 4 to 'ourArray'
+
+// another loop is called the 'for' loop. this loop runs a specific number of times
+
+const ourArray = [];
+
+for (let i = 0; i < 5; i++) {
+  ourArray.push(i);
+}
+
+// this loop will run 5 times, adding the numbers 0-4 to the array
+
+// another loop is called the 'do...while' loop. this loop will do one pass of the code and then continue to run until the 'while' loop is finished
+
+const ourArray = [];
+let i = 0;
+
+do {
+  ourArray.push(i);
+  i++;
+} while (i < 5);
+
+// recursion is the concept that a function can be expressed in terms of itself
+
+function multiply(arr, n) {
+  let product = 1;
+  for (let i = 0; i < n; i++) {
+    product *= arr[i];
+  }
+  return product;
+}
+
+// this can be rewritten using recursion
+
+function multiply(arr, n) {
+  if (n <= 0) {
+    return 1;
+  } else {
+    return multiply(arr, n - 1) * arr[n - 1];
+  }
+}
+
+/* The recursive version of multiply breaks down like this. In the base case, where n <= 0, it returns 1. For larger values of n, it calls itself, but with n - 1. That function call is evaluated in the same way, calling multiply again until n <= 0. At this point, all the functions can return and the original multiply returns the answer */
+
