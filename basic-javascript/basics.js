@@ -662,3 +662,10 @@ function multiply(arr, n) {
 
 /* The recursive version of multiply breaks down like this. In the base case, where n <= 0, it returns 1. For larger values of n, it calls itself, but with n - 1. That function call is evaluated in the same way, calling multiply again until n <= 0. At this point, all the functions can return and the original multiply returns the answer */
 
+
+
+// we can do math with javascript too! javascript has a built-in function called 'Math.random()'. we can use variations of this to do multiple math functions
+
+// Math.random() will generate a random whole number
+// Math.floor() will round down to the lowest whole number
+// parseInt() parses a string and returns a number
