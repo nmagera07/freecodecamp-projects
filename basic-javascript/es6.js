@@ -132,3 +132,145 @@ const profileUpdate = ({ name, age, nationality, location }) => {
 
 // when profileData is passed to the function, the values are destructured from the function parameter for use within the function
 
+
+// another fun feature with es6 includes 'template literals'. these allow you to make multi line strings and it makes things much easier
+
+const person = {
+  name: "Zodiac Hasbro",
+  age: 56
+};
+
+const greeting = `Hello, my name is ${person.name}!
+I am ${person.age} years old.`;
+
+console.log(greeting);
+
+// the console will display the string 'Hello, my name is Zodiac Hasbro! I am 56 years old'
+
+// you can more easily write object literals with this new syntax as well
+
+const getMousePosition = (x, y) => ({
+  x: x,
+  y: y
+});
+
+// can be rewritten as so:
+
+const getMousePosition = (x, y) => ({ x, y });
+
+
+
+// with es6, it provides a new syntax to create objects, by using the 'class' keyword
+
+// Explicit constructor
+class SpaceShuttle {
+  constructor(targetPlanet) {
+    this.targetPlanet = targetPlanet;
+  }
+  takeOff() {
+    console.log("To " + this.targetPlanet + "!");
+  }
+}
+
+// Implicit constructor 
+class Rocket {
+  launch() {
+    console.log("To the moon!");
+  }
+}
+
+const zeus = new SpaceShuttle('Jupiter');
+// prints To Jupiter! in console
+zeus.takeOff();
+
+const atlas = new Rocket();
+// prints To the moon! in console
+atlas.launch();
+
+// you can obtain values from an object and set the value of a property within an object. these are called 'getters' and setters'
+
+class Book {
+  constructor(author) {
+    this._author = author;
+  }
+  // getter
+  get writer() {
+    return this._author;
+  }
+  // setter
+  set writer(updatedAuthor) {
+    this._author = updatedAuthor;
+  }
+}
+const novel = new Book('anonymous');
+console.log(novel.writer);
+novel.writer = 'newAuthor';
+console.log(novel.writer);
+
+// the console would display the strings 'anonymous' and 'newAuthor'
+
+// we can easily share code among javascript files. we do this by exporting parts of a file for use in one or more files
+
+<script type="module" src="filename.js"></script>
+
+// a script that uses the 'module' type can now use the 'import' and 'export' features
+
+// if you have a variable or function you want to use in multiple files, we can export it, like so:
+
+export const add = (x, y) => {
+  return x + y;
+}
+
+// or like this:
+
+const add = (x, y) => {
+  return x + y;
+}
+
+export { add };
+
+// alternatively, if we want to import a certain function or variable we can do so like this:
+
+import { add } from './math_functions.js';
+
+// this will enable you to use the 'add' function from the 'math_functions' file
+
+// if you wanted to import all contents of a certain file you can do so like this:
+
+import * as myMathModule from "./math_functions.js"; 
+
+// this will create an object called 'myMathModule'. this object contains all the xports from the 'math_functions.js' file
+
+// if you are only exporting one value from a file, you should use the 'export default' syntax
+
+
+// with javascript promises, we can use them to fulfill certain tasks. 'promise' is a constructor function so we need to use the 'new' keyword
+
+const myPromise = new Promise((resolve, reject) => {
+
+});
+
+// the resolve and reject methods are used to determine the outcome of the promise
+
+// a promise has 3 states: pending, fulfilled and rejected. the methods 'reject' and 'resolve' are used to complete a promise
+
+const myPromise = new Promise((resolve, reject) => {
+  if(condition here) {
+    resolve("Promise was fulfilled");
+  } else {
+    reject("Promise was rejected");
+  }
+});
+
+// promises are most useful when you have a process that takes an unknown amount of time in your code. this can be achieved by using the 'then' method
+
+myPromise.then(result => {
+  
+});
+
+// you can use the 'catch' method when your promise has been rejected
+
+myPromise.catch(error => {
+  
+});
+
