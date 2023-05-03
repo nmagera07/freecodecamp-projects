@@ -137,3 +137,166 @@ let duck = new Bird("Donald");
 
 Bird.prototype.isPrototypeOf(duck); // this would return true
 
+
+
+// prototype chain
+// all objects in javascript have a 'prototype'. an object's prototype itself is an object
+
+function Bird(name) {
+    this.name = name;
+  }
+  
+  typeof Bird.prototype;
+
+// because prototype is an object, a prototype can have it's own prototype. the prototype of Bird.prototype is Object.prototype
+
+let duck = new Bird("Donald");
+duck.hasOwnProperty("name");
+
+// the 'hasOwnProperty' method is defined in Object.prototype, which can be access by Bird.prototype, which can then be accessed by 'duck'
+// this is an example of the prototype chain. Bird is the supertype for duck, while duck is the subtype
+// Object is a supertype for both Bird and duck. Object is a supertype for all objects in javascript, therefore any object can use hasOwnProperty
+
+
+// there is a principle in programming called 'Don't Repeat Yourself' (DRY). repeated code can cause problems because any chances requires fixing
+// code in multiple places
+
+Bird.prototype = {
+    constructor: Bird,
+    describe: function() {
+      console.log("My name is " + this.name);
+    }
+  };
+  
+  Dog.prototype = {
+    constructor: Dog,
+    describe: function() {
+      console.log("My name is " + this.name);
+    }
+  };
+
+// the describe method is repeated in two places. we can edit this code to be DRY by creating a supertype called 'Animal'
+
+function Animal() { };
+
+Animal.prototype = {
+  constructor: Animal, 
+  describe: function() {
+    console.log("My name is " + this.name);
+  }
+};
+
+
+// we can create a new instance of an objec to inherit behavior from the supertype
+
+let duck = Object.create(Animal.prototype)
+
+// now we can set the prototype of the subtype to be an instance of animal
+
+Bird.prototype = Object.create(Animal.prototype)
+
+let duck = new Bird('Donald')
+duck.eat()
+
+// duck inherits all of Animal's properties, including the eat method
+
+
+// when an object inherits its prototype from another object, it also inherits the supertype's constructor property
+
+function Bird() { }
+Bird.prototype = Object.create(Animal.prototype);
+let duck = new Bird();
+duck.constructor
+
+// duck and all instances of Bird should show that they were constructed by Bird and not Animal. you can manually set the constructor property
+
+Bird.prototype.constructor = Bird
+duck.constructor
+
+// we can still add new methods to a constructor function while still inheriting previous methods from it's supertype
+
+function Animal() { }
+Animal.prototype.eat = function() {
+  console.log("nom nom nom");
+};
+function Bird() { }
+Bird.prototype = Object.create(Animal.prototype);
+Bird.prototype.constructor = Bird;
+
+Bird.prototype.fly = function() {
+    console.log("I'm flying!");
+  };
+
+// now instances of Bird will have both 'eat()' and 'fly()' methods
+
+// it is possible to overwrite an inherited method. we just have to add a method to the 'ChildObject.prototype'
+
+function Animal() { }
+Animal.prototype.eat = function() {
+  return "nom nom nom";
+};
+function Bird() { }
+
+Bird.prototype = Object.create(Animal.prototype);
+
+Bird.prototype.eat = function() {
+  return "peck peck peck";
+};
+
+// now if you call the 'eat()' method, it will output 'peck peck peck' instead of 'nom nom nom'
+
+// there are cases where inheritance isn't the best solution. inheritance doesn't work well for unrelated objects. in these instances
+// we can use 'mixins'. mixins allow other objects to use a collection of functions
+
+let flyMixin = function(obj) {
+    obj.fly = function() {
+      console.log("Flying, wooosh!");
+    }
+  };
+
+// the flyMixin takes any object and gives it the fly method
+
+let bird = {
+    name: "Donald",
+    numLegs: 2
+  };
+  
+  let plane = {
+    model: "777",
+    numPassengers: 524
+  };
+  
+  flyMixin(bird);
+  flyMixin(plane);
+
+  bird.fly();
+  plane.fly();
+
+
+
+// previously, bird had a public property 'name'. it is considered public because it can be accessed and changed outside of bird's definition
+// any part of your code can easily changed the name of 'bird' to any value. 
+// for example, if we had passwords or bank accounts that could easily be changed...well that wouldn't be good, right?
+// simplest way to fix this problem is by creating a variable within the constructor function. this changes the scope of that variable to 
+// only be accessible within the function. now it can't be changed globally
+
+function Bird() {
+    let hatchedEgg = 10;
+  
+    this.getHatchedEggCount = function() { 
+      return hatchedEgg;
+    };
+  }
+  let ducky = new Bird();
+  ducky.getHatchedEggCount();
+
+// in javascript, a function always has access to the context in which it was created. this is called 'closure'
+
+
+// a common pattern in javascript is to execute a function as soon as it is declared
+
+(function () {
+    console.log("Chirp, chirp!");
+  })();
+
+// this is an anonymous function expression that executes right away. this patt
