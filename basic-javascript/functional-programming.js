@@ -36,3 +36,52 @@ const tea4TeamFCC = getTea(40);
 // don't alter a variable or object: create new variables and objects and return them if need be from a function
 // declare function parameters - any computation inside a function depends only on the arguments passed to the function, not on any global variable or object
 
+
+
+// simple array functions
+
+// map method - iterates over each item in an array and returns a new array containing the results of calling the callback function on each element
+// it does this without mutating the original array
+// map has 3 arguments - first argument is the current element being processed, second is the index of the element and third is the array upon which map 
+// method was used
+
+const users = [
+  { name: 'John', age: 34 },
+  { name: 'Amy', age: 20 },
+  { name: 'camperCat', age: 10 }
+];
+
+const names = users.map(user => user.name);
+console.log(names);
+
+// the console would display 'John, Amy, camperCat'
+
+// custom function to see how map actually works
+
+Array.prototype.myMap = function(callback) {
+  const newArray = [];
+  // Only change code below this line
+  
+  for(let i = 0; i < this.length; i++) {
+    newArray.push(callback(this[i], i, this))
+  }
+  // Only change code above this line
+  
+  return newArray;
+};
+
+// another useful array function is 'filter()'. filter calls a function on each element of an array and returns a new array containing only 
+// the elements for which that function returns a truthy value - that is, a value which returns 'true' if pased to the 'Boolean()' constructor
+// it filters the array based on the function passed to it
+
+const users = [
+  { name: 'John', age: 34 },
+  { name: 'Amy', age: 20 },
+  { name: 'camperCat', age: 10 }
+];
+
+const usersUnder30 = users.filter(user => user.age < 30);
+console.log(usersUnder30); 
+
+// the console would display the value '[ { name: 'Amy', age: 20 }, { name: 'camperCat', age: 10 } ]'
+
