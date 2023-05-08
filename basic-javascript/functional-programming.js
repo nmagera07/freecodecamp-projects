@@ -85,3 +85,91 @@ console.log(usersUnder30);
 
 // the console would display the value '[ { name: 'Amy', age: 20 }, { name: 'camperCat', age: 10 } ]'
 
+
+
+// the slice method returns a copy of certain elements of an array. it can take two arguments, the first is where to begin the slice, and the
+// second is where to end the slice (non-inclusive)
+
+const arr = ["Cat", "Dog", "Tiger", "Zebra"];
+const newArray = arr.slice(1, 3);
+
+// newArray would have the value ['Dog', 'Tiger']
+
+// splice - takes arguments fror the index of where to start removing items, and the number of items to remove. this method mutates the original array
+
+const cities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+cities.splice(3, 1);
+
+// splice returns the string London and deletes it from the cities array. cities will have the value ["Chicago", "Delhi", "Islamabad", "Berlin"].
+
+// we can join multiple arrays by using the 'concat' method. it returns a new array and does not mutate either of the original arrays
+
+[1, 2, 3].concat([4, 5, 6]);
+
+// the returned array would be [1, 2, 3, 4, 5, 6]
+
+// we can use concat to add items to the end of an array without any mutating effects, as opposed to 'push()', which mutates the array the items
+// are added to
+
+
+
+// the 'reduce' method allows for more general forms of array processing. the reduce method iterates over each item in an array and returns a single value
+// this is achieved via a callback function that is called on each iteration
+// the callback function accepts four arguments. the first argument is known as the 'accumulator', which gets assigned the return value of the callback
+// function from the previous iteration
+// the second argument is the current element being processed
+// the third is the index of the element
+// and the fourth is the array upon which reduce is called
+// in addition to the callback function, reduce has an additional parameter which takes an initial value for the accumulator
+// if this second parameter is not used, then the first iteration is skipped and the second iteration gets passed the first element of the array as the
+// accumulator
+
+const users = [
+  { name: 'John', age: 34 },
+  { name: 'Amy', age: 20 },
+  { name: 'camperCat', age: 10 }
+];
+
+const sumOfAges = users.reduce((sum, user) => sum + user.age, 0);
+console.log(sumOfAges);
+
+// the console would display '64'
+
+// finding the square root of only positive integers
+
+const squareList = arr => {
+  // Only change code below this line
+  // return arr;
+
+  return arr.filter(num => num > 0 && num % parseInt(num) === 0).map(num => num * num)
+  // Only change code above this line
+};
+
+const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+console.log(squaredIntegers);
+
+
+// the 'sort' method sorts the elements of an array according to the callback function
+
+function ascendingOrder(arr) {
+  return arr.sort(function(a, b) {
+    return a - b;
+  });
+}
+
+ascendingOrder([1, 5, 2, 3, 4]);
+
+// this would return the value [1, 2, 3, 4, 5]
+
+// the 'split' method splits a string into an array of strings. it takes an argument for the delimiter, which can be a character to use to break
+// up the string or a regular expression
+// for example, we can put a space as the delimter, to break up the string everytime it finds a space
+
+const str = "Hello World";
+const bySpace = str.split(" ");
+
+const otherString = "How9are7you2today";
+const byDigits = otherString.split(/\d/);
+
+// bySpace would have the value ["Hello", "World"] and byDigits would have the value ["How", "are", "you", "today"]
+
