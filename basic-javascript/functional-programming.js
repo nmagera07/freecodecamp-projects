@@ -173,3 +173,32 @@ const byDigits = otherString.split(/\d/);
 
 // bySpace would have the value ["Hello", "World"] and byDigits would have the value ["How", "are", "you", "today"]
 
+
+// the join method is used to join the elements of an array together to create a string
+// it takes an argument for the delimiter that is used to separate the array elements in the string
+
+const arr = ["Hello", "World"];
+const str = arr.join(" ");
+
+// str would have the value of the string 'Hello World'
+
+// we can use the 'every' method to check if every element in an array passes a certain test. it returns a boolean value of true if it passes, false if not
+
+const numbers = [1, 5, 8, 0, 10, 11];
+
+numbers.every(function(currentValue) {
+  return currentValue < 10;
+});
+
+// the every method would return 'false' here
+
+// we can use the 'some' method to check if any element passes a certain test
+
+const numbers = [10, 50, 8, 220, 110, 11];
+
+numbers.some(function(currentValue) {
+  return currentValue < 10;
+});
+
+// the method would return 'true'
+
