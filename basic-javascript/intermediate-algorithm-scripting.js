@@ -40,3 +40,55 @@ function destroyer(arr) {
   }
   
   destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+
+// wherefore art thou
+
+function whatIsInAName(collection, source) {
+    // "What's in a name? that which we call a rose
+    // By any other name would smell as sweet.”
+    // -- by William Shakespeare, Romeo and Juliet
+    const souceKeys = Object.keys(source);
+  
+    // filter the collection
+    return collection.filter(obj => {
+      for (let i = 0; i < souceKeys.length; i++) {
+        if (!obj.hasOwnProperty(souceKeys[i]) ||
+            obj[souceKeys[i]] !== source[souceKeys[i]]) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }
+  
+  whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+
+// spinal tap case
+
+function spinalCase(str) {
+    // Replace low-upper case to low-space-uppercase
+    str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+    // Split on whitespace and underscores and join with dash
+    return str
+      .toLowerCase()
+      .split(/(?:_| )+/)
+      .join("-");
+  }
+  
+  // test here
+  spinalCase("This Is Spinal Tap");
+  
+  
+  
+  // pig latin
+  
+  function translatePigLatin(str) {
+    return str
+      .replace(/^[aeiou]\w*/, "$&way")
+      .replace(/(^[^aeiou]+)(\w*)/, "$2$1ay");
+  }
+  
+  // test here
+  translatePigLatin("consonant");
