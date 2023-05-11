@@ -92,3 +92,80 @@ function spinalCase(str) {
   
   // test here
   translatePigLatin("consonant");
+
+
+// search and replace
+
+function myReplace(str, before, after) {
+  // console.log(str.replace(before, after))
+  if(before.startsWith(before[0].toUpperCase())) {
+    const capitalized = after.charAt(0).toUpperCase() + after.slice(1)
+    return str.replace(before, capitalized)
+  } else if(after.startsWith(after[0].toUpperCase())) {
+    const lowerCased = after.charAt(0).toLowerCase() + after.slice(1)
+    return str.replace(before, lowerCased)
+  }
+  return str.replace(before, after);
+}
+
+myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+
+
+
+// dna pairing
+
+function pairElement(str) {
+  let arr = str.split('')
+  let arr2 = []
+
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i] === 'C') {
+      arr2.push([arr[i], 'G'])
+    }
+    if(arr[i] === 'G') {
+      arr2.push([arr[i], 'C'])
+    }
+    if(arr[i] === 'A') {
+      arr2.push([arr[i], 'T'])
+    }
+    if(arr[i] === 'T') {
+      arr2.push([arr[i], 'A'])
+    }
+  }
+  return arr2
+}
+
+pairElement("ATCGA");
+
+
+// missing letters
+
+function fearNotLetter(str) {
+  for (let i = 0; i < str.length; i++) {
+
+    const charCode = str.charCodeAt(i);
+  console.log(charCode)
+    if (charCode !== str.charCodeAt(0) + i) {
+
+      return String.fromCharCode(charCode - 1);
+    }
+  }
+  return undefined;
+}
+
+fearNotLetter("abce");
+
+
+// sorted union
+
+function uniteUnique(arr) {
+  let flatArr = Object.values(arguments).flat()
+  let uniqueChars = [...new Set(flatArr)]
+  
+  return uniqueChars
+  
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+
