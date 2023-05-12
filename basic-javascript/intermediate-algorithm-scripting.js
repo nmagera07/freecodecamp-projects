@@ -169,3 +169,70 @@ function uniteUnique(arr) {
 uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 
 
+// convert html entities
+
+function convertHTML(str) {
+  let arr = str.split('')
+
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i] === '&') {
+      arr[i] = '&amp;'
+    }
+    if(arr[i] === '<') {
+      arr[i] = '&lt;' 
+    }
+    if(arr[i] === '>') {
+      arr[i] = '&gt;'
+    }
+    if(arr[i] === '"') {
+      arr[i] = '&quot;'
+    }
+    if(arr[i] === "'") {
+      arr[i] = '&apos;'
+    }
+  }
+  console.log(arr)
+  return arr.join('')
+}
+
+convertHTML("Dolce & Gabbana");
+
+
+
+// sum all odd fibonacci numbers
+
+function sumFibs(num) {
+  let arr = [0,1]
+
+  for(let i = 2; i <= num; i++) {
+    arr[i] = arr[i-2] + arr[i-1]
+    
+    
+  }
+  return arr.filter((int) => int % 2 !== 0 && int <= num).reduce((a,b) => a + b, 0)
+}
+
+sumFibs(1000);
+
+
+// sum all primes
+
+function sumPrimes(num) {
+  // Helper function to check primality
+  function isPrime(num) {
+    const sqrt = Math.sqrt(num);
+    for (let i = 2; i <= sqrt; i++) {
+      if (num % i === 0)
+        return false;
+    }
+    return true;
+  }
+
+  // Check all numbers for primality
+  let sum = 0;
+  for (let i = 2; i <= num; i++) {
+    if (isPrime(i))
+      sum += i;
+  }
+  return sum;
+}
