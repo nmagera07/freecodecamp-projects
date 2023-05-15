@@ -236,3 +236,49 @@ function sumPrimes(num) {
   }
   return sum;
 }
+
+// drop it
+
+function dropElements(arr, func) {
+  while (arr.length > 0 && !func(arr[0])) {
+    arr.shift();
+  }
+  return arr;
+}
+
+dropElements([1, 2, 3], function(n) {return n < 3; });
+
+
+// steamroller
+
+function steamrollArray(arr) {
+  while (arr.find((elem) => Array.isArray(elem))) {
+  arr = [].concat.apply([], arr);
+}
+return arr
+}
+steamrollArray([1, [], [3, [[4]]]]);
+
+
+// binary agents
+
+function binaryAgent(str) {
+  let arr = str.split(' ')
+
+  return arr.map(elem => String.fromCharCode(parseInt(elem, 2))).join('')
+}
+
+
+
+// arguments optional
+
+function addTogether() {
+  const [first, second] = arguments;
+
+  if (typeof (first) === "number") {
+    if (typeof (second) === "number") return first + second;
+    if (arguments.length === 1) return (second) => addTogether(first, second);
+  }
+}
+
+
